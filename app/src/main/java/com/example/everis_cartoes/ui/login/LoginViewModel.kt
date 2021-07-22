@@ -1,6 +1,8 @@
 package com.example.everis_cartoes.ui.login
 
 import androidx.lifecycle.ViewModel
+import com.example.everis_cartoes.usecase.login.LoginUseCase
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel( private val useCase: LoginUseCase) : ViewModel() {
+
 }

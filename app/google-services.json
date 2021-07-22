@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "170207435776",
+    "project_id": "everis-cartoes",
+    "storage_bucket": "everis-cartoes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170207435776:android:3812dfa3516f5e1fce0ce5",
+        "android_client_info": {
+          "package_name": "com.example.cartoeseveris"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170207435776-ob16bbp0egho816p4ot0qqdqig6q4doc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIMmawm-AffXPIH7lVUDTYMquJWNc2vvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170207435776-ob16bbp0egho816p4ot0qqdqig6q4doc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
