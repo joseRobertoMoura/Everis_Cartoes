@@ -5,5 +5,5 @@ import com.example.everis_cartoes.usecase.login.LoginUseCaseImpl
 import org.koin.dsl.module
 
 val loginUseCaseModule = module {
-    factory<LoginUseCase> { LoginUseCaseImpl() }
+    factory<LoginUseCase> { LoginUseCaseImpl(   get()  ) }
 }

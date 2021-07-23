@@ -5,9 +5,11 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val loginViewModelModule = module {
-    viewModel<LoginViewModel> {
+    viewModel{
         LoginViewModel(
-            useCase = get()
+            useCase = get(),
+            mainDispatcher = get(),
+            ioDispatcher = get()
         )
     }
 }

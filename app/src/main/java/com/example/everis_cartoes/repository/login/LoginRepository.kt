@@ -1,18 +1,15 @@
-package com.example.everis_cartoes.usecase.login
+package com.example.everis_cartoes.repository.login
 
-import android.content.Context
 import com.example.everis_cartoes.data.model.login.LoginFireBaseModel
 
-interface LoginUseCase {
-
-    suspend fun executeLoginFireBase(
+interface LoginRepository {
+    suspend fun loginFireBase(
         dataLogin: LoginFireBaseModel,
         callbackSuccess:() -> Unit,
         callbackError: (error:String) -> Unit)
 
-    suspend fun executeVerifySectionFireBase(
+    suspend fun verifySectionFireBase(
         callbackSuccessVerifySection:() -> Unit,
         callbackErrorVerifySection: () -> Unit
     )
-
 }
