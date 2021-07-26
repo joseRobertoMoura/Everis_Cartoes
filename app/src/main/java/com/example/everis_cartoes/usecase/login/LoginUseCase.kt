@@ -1,7 +1,7 @@
 package com.example.everis_cartoes.usecase.login
 
-import android.content.Context
 import com.example.everis_cartoes.data.model.login.LoginFireBaseModel
+import com.google.firebase.auth.FirebaseAuth
 
 interface LoginUseCase {
 
@@ -14,5 +14,7 @@ interface LoginUseCase {
         callbackSuccessVerifySection:() -> Unit,
         callbackErrorVerifySection: () -> Unit
     )
+
+    suspend fun executeLogoutFireBase()
 
 }

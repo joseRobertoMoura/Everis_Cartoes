@@ -21,4 +21,8 @@ class LoginUseCaseImpl(private val repository:LoginRepository) : LoginUseCase{
         repository.verifySectionFireBase(callbackSuccessVerifySection,callbackErrorVerifySection)
     }
 
+    override suspend fun executeLogoutFireBase(){
+        repository.logoutFireBase()
+    }
+
 }

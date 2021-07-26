@@ -11,11 +11,15 @@ class LoginRepositoryImpl : LoginRepository {
         callbackSuccess: () -> Unit,
         callbackError: (error: String) -> Unit
     ) {
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(dataLogin.userName, dataLogin.password)
+        FirebaseAuth.getInstance()
+            .signInWithEmailAndPassword(dataLogin.userName, dataLogin.password)
             .addOnCompleteListener {
                 when{
                     it.isSuccessful -> {
                         callbackSuccess.invoke()
+                    }
+                    else -> {
+                        callbackError.invoke("Error!")
                     }
                 }
             }.addOnFailureListener {
@@ -40,5 +44,9 @@ class LoginRepositoryImpl : LoginRepository {
         }else{
             callbackErrorVerifySection.invoke()
         }
+    }
+
+    override suspend fun logoutFireBase() {
+        FirebaseAuth.getInstance().signOut()
     }
 }

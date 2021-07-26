@@ -1,5 +1,6 @@
 package com.example.everis_cartoes.ui.login
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -7,6 +8,9 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
 import com.example.everis_cartoes.R
 import com.example.everis_cartoes.data.model.login.LoginFireBaseModel
+import com.example.everis_cartoes.ui.home.HomeActivity
+import com.example.everis_cartoes.utils.LogoutFireBase
+import com.example.everis_cartoes.utils.VerifyLoginField
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -22,17 +26,38 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         initViews()
-        initListener()
+        verifyLogin()
+    }
+
+    private fun verifyLogin() {
+        viewModel.verifyLogin()
+        viewModel.verifyActionView.observe(this,{verify ->
+            when(verify){
+                is VerifyActionView.verifySuccess -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                }
+                is VerifyActionView.verifyError -> {
+                    initListener()
+                }
+            }
+        })
     }
 
     private fun initListener() {
         btnLogin.setOnClickListener {
-            val login = LoginFireBaseModel(
-                edtUserName.text.toString(),
-                edtPassword.text.toString()
-            )
-            initViewModel(login)
+            VerifyLoginField.verifyLogin(
+                edtUserName.text.toString() ,
+                edtPassword.text.toString(),
+                this
+            ).let {
+                if(it.userName.isNotEmpty()){
+                    initViewModel(it)
+                }else{
+                    Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+
     }
 
     private fun initViewModel(login:LoginFireBaseModel) {
@@ -40,11 +65,11 @@ class LoginActivity : AppCompatActivity() {
         viewModel.loginActionView.observe(this, { state ->
             when(state){
                 is LoginActionView.LoginSuccess -> {
-                    Toast.makeText(this,"Sucesso",Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, HomeActivity::class.java))
                 }
 
                 is LoginActionView.LoginError -> {
-                    Toast.makeText(this,state.toString(),Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,state.error,Toast.LENGTH_SHORT).show()
                 }
             }
         })
