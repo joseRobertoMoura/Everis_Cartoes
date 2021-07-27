@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Everis_Cartoes">
-        <activity android:name=".ui.splashScreen.SpalshScreenActivity" android:theme="@style/Theme.Design.NoActionBar">
+        <activity android:name=".ui.splashScreen.SplashScreenActivity" android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

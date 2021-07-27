@@ -7,14 +7,12 @@ import android.os.Handler
 import android.os.Looper
 import com.example.everis_cartoes.R
 import com.example.everis_cartoes.ui.home.HomeActivity
-import com.example.everis_cartoes.ui.home.HomeViewModel
 import com.example.everis_cartoes.ui.login.LoginActivity
-import com.example.everis_cartoes.utils.StatusUserFireBase
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SpalshScreenActivity : AppCompatActivity() {
+class SplashScreenActivity : AppCompatActivity() {
 
-    private val viewModel by viewModel<SpalshScreenViewModel>()
+    private val viewModel by viewModel<SplashScreenViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +26,11 @@ class SpalshScreenActivity : AppCompatActivity() {
         viewModel.init()
         viewModel.verifySession.observe(this, {state ->
             when(state){
-                is SpalshScreenActionView.sessionInitialized -> {
+                is SplashScreenActionView.SessionInitialized -> {
                     startActivity(Intent(this, HomeActivity::class.java))
                 }
 
-                is SpalshScreenActionView.sessionNotInitialized -> {
+                is SplashScreenActionView.SessionNotInitialized -> {
                     startActivity(Intent(this, LoginActivity::class.java))
                 }
             }

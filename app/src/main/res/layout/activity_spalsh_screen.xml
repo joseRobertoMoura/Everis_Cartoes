@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.splashScreen.SpalshScreenActivity"
+    tools:context=".ui.splashScreen.SplashScreenActivity"
     android:background="@drawable/gradiente_background">
 
     <androidx.appcompat.widget.AppCompatTextView
