@@ -33,20 +33,4 @@ class LoginRepositoryImpl : LoginRepository {
                 }
             }
     }
-
-    override suspend fun verifySectionFireBase(
-        callbackSuccessVerifySection: () -> Unit,
-        callbackErrorVerifySection: () -> Unit
-    ) {
-        val userLoged = FirebaseAuth.getInstance().currentUser
-        if (userLoged != null){
-            callbackSuccessVerifySection.invoke()
-        }else{
-            callbackErrorVerifySection.invoke()
-        }
-    }
-
-    override suspend fun logoutFireBase() {
-        FirebaseAuth.getInstance().signOut()
-    }
 }

@@ -10,11 +10,4 @@ interface LoginUseCase {
         callbackSuccess:() -> Unit,
         callbackError: (error:String) -> Unit)
 
-    suspend fun executeVerifySectionFireBase(
-        callbackSuccessVerifySection:() -> Unit,
-        callbackErrorVerifySection: () -> Unit
-    )
-
-    suspend fun executeLogoutFireBase()
-
 }

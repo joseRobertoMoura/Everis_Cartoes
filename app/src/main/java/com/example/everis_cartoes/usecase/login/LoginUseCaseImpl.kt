@@ -13,16 +13,4 @@ class LoginUseCaseImpl(private val repository:LoginRepository) : LoginUseCase{
        callbackError: (error:String) -> Unit){
        repository.loginFireBase(dataLogin,callbackSuccess,callbackError)
     }
-
-    override suspend fun executeVerifySectionFireBase(
-        callbackSuccessVerifySection:() -> Unit,
-        callbackErrorVerifySection: () -> Unit
-    ){
-        repository.verifySectionFireBase(callbackSuccessVerifySection,callbackErrorVerifySection)
-    }
-
-    override suspend fun executeLogoutFireBase(){
-        repository.logoutFireBase()
-    }
-
 }

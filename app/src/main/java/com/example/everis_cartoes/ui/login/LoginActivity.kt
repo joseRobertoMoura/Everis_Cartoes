@@ -9,7 +9,6 @@ import androidx.appcompat.widget.AppCompatEditText
 import com.example.everis_cartoes.R
 import com.example.everis_cartoes.data.model.login.LoginFireBaseModel
 import com.example.everis_cartoes.ui.home.HomeActivity
-import com.example.everis_cartoes.utils.LogoutFireBase
 import com.example.everis_cartoes.utils.VerifyLoginField
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,42 +25,21 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         initViews()
-        verifyLogin()
+        initEvent()
     }
 
-    private fun verifyLogin() {
-        viewModel.verifyLogin()
-        viewModel.verifyActionView.observe(this,{verify ->
-            when(verify){
-                is VerifyActionView.verifySuccess -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
-                }
-                is VerifyActionView.verifyError -> {
-                    initListener()
-                }
-            }
-        })
-    }
-
-    private fun initListener() {
+    private fun initEvent() {
         btnLogin.setOnClickListener {
-            VerifyLoginField.verifyLogin(
-                edtUserName.text.toString() ,
-                edtPassword.text.toString(),
-                this
-            ).let {
-                if(it.userName.isNotEmpty()){
-                    initViewModel(it)
-                }else{
-                    Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
-                }
-            }
+            initViewModel()
         }
-
     }
 
-    private fun initViewModel(login:LoginFireBaseModel) {
-        viewModel.init(login)
+    private fun initViewModel() {
+        viewModel.init(VerifyLoginField.verifyLogin(
+            edtUserName.text.toString(),
+            edtPassword.text.toString(),
+            this)
+        )
         viewModel.loginActionView.observe(this, { state ->
             when(state){
                 is LoginActionView.LoginSuccess -> {

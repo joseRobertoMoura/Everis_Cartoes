@@ -8,10 +8,4 @@ interface LoginRepository {
         callbackSuccess:() -> Unit,
         callbackError: (error:String) -> Unit)
 
-    suspend fun verifySectionFireBase(
-        callbackSuccessVerifySection:() -> Unit,
-        callbackErrorVerifySection: () -> Unit
-    )
-
-    suspend fun logoutFireBase()
 }

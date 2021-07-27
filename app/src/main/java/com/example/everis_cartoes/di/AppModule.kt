@@ -1,8 +1,13 @@
 package com.example.everis_cartoes.di
 
+import com.example.everis_cartoes.di.home.homeViewModelModule
+
 val appModule = listOf(
         loginUseCaseModule,
         loginViewModelModule,
         dispachersModule,
-        loginRepositoryModule
+        loginRepositoryModule,
+        statusUserFireBaseModule,
+        homeViewModelModule,
+        splashScreenViewModelModule
 )
