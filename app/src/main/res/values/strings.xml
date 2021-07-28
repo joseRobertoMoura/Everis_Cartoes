@@ -7,4 +7,7 @@
     <string name="txt_cadastrar">Ainda não é cadastrado?</string>
     <string name="msg_empity_field">Os campos precisam ser preenchidos</string>
     <string name="title_splash_screen">Everis Cartões</string>
+    <string name="biometric_user_password">Usar e-mail e senha</string>
+    <string name="biometric_title">Login por Biometria</string>
+    <string name="biometric_auth_fail">Authentication failed</string>
 </resources>
