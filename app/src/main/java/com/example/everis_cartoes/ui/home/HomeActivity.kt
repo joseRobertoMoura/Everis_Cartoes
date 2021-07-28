@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.example.everis_cartoes.R
 import com.example.everis_cartoes.ui.login.LoginActivity
+import com.example.everis_cartoes.ui.splashScreen.SplashScreenActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity: AppCompatActivity() {
@@ -31,7 +32,7 @@ class HomeActivity: AppCompatActivity() {
         viewModel.logoutStatus.observe(this, {state ->
             when(state){
                 is HomeViewAction.LogoutSuccess -> {
-                    startActivity(Intent(this,LoginActivity::class.java))
+                    startActivity(Intent(this,SplashScreenActivity::class.java))
                     finish()
                 }
 

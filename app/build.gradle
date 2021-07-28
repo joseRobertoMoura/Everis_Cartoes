@@ -34,13 +34,15 @@ android {
 }
 
 dependencies {
-    implementation platform('com.google.firebase:firebase-bom:27.1.0')
+    //Biometric
+    implementation "androidx.biometric:biometric-ktx:1.2.0-alpha03"
     //DI
     def koin_version = '2.2.2'
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-androidx-scope:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     //FireBase
+    implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-auth'
     //Retrofit
