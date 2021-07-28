@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -33,13 +34,38 @@ android {
 }
 
 dependencies {
-
+    implementation platform('com.google.firebase:firebase-bom:27.1.0')
+    //DI
+    def koin_version = '2.2.2'
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    //FireBase
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-auth'
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    //Android
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.+'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    //Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    //Image
+    def coil_version = '1.1.1'
+    implementation "io.coil-kt:coil:$coil_version"
+    //Test
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7"
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'android.arch.core:core-testing:1.1.1'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    testImplementation "io.mockk:mockk:1.11.0"
+    testImplementation "androidx.test.espresso:espresso-core:3.4.0"
 }
