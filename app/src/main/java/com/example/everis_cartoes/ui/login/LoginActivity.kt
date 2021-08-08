@@ -23,11 +23,9 @@ class LoginActivity : AppCompatActivity() {
    val AUTH_KEY = AuthTags.AUTH.toString()
 
     private val viewModel by viewModel<LoginViewModel>()
-
     lateinit var edtUserName: AppCompatEditText
     lateinit var edtPassword: AppCompatEditText
     lateinit var btnLogin: Button
-
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
@@ -59,11 +57,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initBiometricAuth() {
-
         executor = ContextCompat.getMainExecutor(this)
         biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
-
                 override fun onAuthenticationError(errorCode: Int,
                                                    errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)

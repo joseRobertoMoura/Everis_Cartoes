@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.everis_cartoes.R
-import com.example.everis_cartoes.ui.login.LoginActivity
+import com.example.everis_cartoes.ui.cartoes.CartoesFragment
 import com.example.everis_cartoes.ui.splashScreen.SplashScreenActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,6 +16,8 @@ class HomeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        initViews()
+        initFragments()
     }
 
     override fun onBackPressed() {
@@ -25,6 +27,16 @@ class HomeActivity: AppCompatActivity() {
 
     private fun logoutApp(){
         initViewModel()
+    }
+
+    private fun initFragments() {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,CartoesFragment.newInstance())
+            commit()
+        }
+    }
+
+    private fun initViews() {
     }
 
     private fun initViewModel(){

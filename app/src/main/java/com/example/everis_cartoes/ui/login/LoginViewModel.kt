@@ -7,6 +7,7 @@ import com.example.everis_cartoes.data.model.login.LoginFireBaseModel
 import com.example.everis_cartoes.usecase.login.LoginUseCase
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.GlobalScope.coroutineContext
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.async
 import kotlinx.coroutines.cancelChildren
@@ -39,7 +40,6 @@ class LoginViewModel(
     private fun executeLogin(login:LoginFireBaseModel) {
         mainDispatcher.launch {
             loginUseCase(login)
-            coroutineContext.cancelChildren()
         }
     }
 
@@ -51,10 +51,12 @@ class LoginViewModel(
 
     private fun success(){
         _loginActionView.postValue(LoginActionView.LoginSuccess)
+        coroutineContext.cancelChildren()
     }
 
     private fun error(error: String){
        _loginActionView.postValue( LoginActionView.LoginError(error))
+        coroutineContext.cancelChildren()
     }
 
 }

@@ -1,6 +1,8 @@
 package com.example.everis_cartoes.di
 
+import com.example.everis_cartoes.di.cartoes.cartoesComponent
 import com.example.everis_cartoes.di.home.homeViewModelModule
+import com.example.everis_cartoes.di.network.networkComponent
 
 val appModule = listOf(
         loginUseCaseModule,
@@ -10,4 +12,4 @@ val appModule = listOf(
         statusUserFireBaseModule,
         homeViewModelModule,
         splashScreenViewModelModule
-)
+) + networkComponent + cartoesComponent
